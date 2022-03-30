@@ -11,6 +11,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container: centos:7
 
     steps:
     - uses: actions/checkout@v2
@@ -22,5 +23,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     
     - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag ocsinventory-docker-image:latest
+      run: docker build . --file Dockerfile --tag brousse/ocsinventory-docker-image:latest
 
+    - name: Docker Push
+      run: docker push --all-tags ${{secrets.DOCKER_USER}}/ocsinventory-docker-image
+      
