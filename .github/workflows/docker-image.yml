@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -22,5 +22,5 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     
     - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag brousse/ocsinventory-docker-image:2.9.2
+      run: docker build . --file Dockerfile --tag brousse/ocsinventory-docker-image:latest
       
