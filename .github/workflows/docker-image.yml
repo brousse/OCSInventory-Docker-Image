@@ -1,4 +1,4 @@
-name: ocsinventory-docker-image
+name: Docker Image CI
 
 on:
   push:
@@ -22,5 +22,5 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     
     - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag brousse/ocsinventory-docker-image:latest
-      
+      run: docker build . --file Dockerfile --tag ocsinventory-docker-image:latest
+
